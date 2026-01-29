@@ -66,22 +66,22 @@ b)Use the below EMR configuration classification json
 ### Option - 2
 #### How to use
 
-1)Create workspace in AMP - https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-onboard-create-workspace.html (You can igore this if you already have a workspace in AMP)
+1) Create workspace in AMP - https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-onboard-create-workspace.html (You can igore this if you already have a workspace in AMP)
 
-2)Get 'Workspace ID' from AMP console. 
+2) Get 'Workspace ID' from AMP console. 
 
-3)Add policy "AmazonPrometheusRemoteWriteAccess" to EC2 instance profile(Service role for EMR cluster EC2 instances) to provide permission to remote write metrics into all Amazon Managed Service for Prometheus workspaces in the account
+3) Add policy "AmazonPrometheusRemoteWriteAccess" to EC2 instance profile(Service role for EMR cluster EC2 instances) to provide permission to remote write metrics into all Amazon Managed Service for Prometheus workspaces in the account
 
-4)When initiating the launch of EMR clusters, 
-a)Ensure metric export setup by using the provided bootstrap action script "install_prometheus_v2.sh" and adding the AWS Prometheus workspace ID as an argument.
-```
---bootstrap-actions '[{"Path":"s3://<s3_path>/install_prometheus_v2.sh","Args":["ws-537c7364-f10f-4210-a0fa-deedd3ea1935"]}]'
-```
-b)Use the below EMR configuration classification json
-```
-./conf_files/configuration.json
-```
-5)You can now start visualizing the metrics in AMG
+4) When initiating the launch of EMR clusters, 
+   1) Ensure metric export setup by using the provided bootstrap action script "install_prometheus_v2.sh" and adding the AWS Prometheus workspace ID as an argument.
+        ```
+        --bootstrap-actions '[{"Path":"s3://<s3_path>/install_prometheus_v2.sh","Args":["ws-537c7364-f10f-4210-a0fa-deedd3ea1935"]}]'
+        ```
+    1) Use the below EMR configuration classification json
+        ```
+        ./conf_files/emr-application-configuration.json
+        ```
+5) You can now start visualizing the metrics in AMG
 
 ### Setting up Ganglia Dashboards
 #### Yarn and OS level metrics Dashboards
@@ -89,10 +89,8 @@ Import the dashboards from utilities/emr-observability/grafana_dashboards
 #### Hbase
 Use this ID "12243" for importing the dashboard into Grafana
 #### Spark
-In Progress
 
 ## Work in progress
-* Spark metrics support
 * Setup Alerts
 
 ## Limitations
@@ -110,7 +108,7 @@ In Progress
 ![Alt text](images/HbaseGrafana-1.png?raw=true "Hbase Dashboard")
 
 ### Dashboard examples - SparkDashboard
-In Progress
+
 
 ###  Recommended Actions
 In the **EMRonEC2OptimizationDashboard**
